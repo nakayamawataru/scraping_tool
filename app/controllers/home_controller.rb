@@ -2,8 +2,8 @@ class HomeController < ApplicationController
   def index
     
     if params[:keyword] && params[:longitude] && params[:latitude]
-     binding.pry
-      @businesses = GoogleMapCrawler.new.exec(params[:keyword].values[0], params[:longitude].values[0], params[:latitude].values[0])
+     #binding.pry
+      @businesses = GoogleMapCrawler.new.exec(params[:keyword], params[:longitude], params[:latitude])
 
       @name = @businesses[0]
       @details = @businesses[1]

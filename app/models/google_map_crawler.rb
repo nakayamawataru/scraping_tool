@@ -24,8 +24,8 @@ class GoogleMapCrawler
         keyword = keyword.to_s.encode("UTF-8")
         location = "@#{longitude},#{latitude}"
         
-        driver.get("https://www.google.com/maps/search/#{keyword}/#{location},17z/data=!3m1!4b1")
-        p "https://www.google.com/maps/search/#{keyword}/#{location},17z/data=!3m1!4b1"
+        driver.get("https://www.google.com/maps/search/#{keyword}/#{location},17z/data=!3m1!4b1?hl=ja&authuser=0")
+        p "https://www.google.com/maps/search/#{keyword}/#{location},17z/data=!3m1!4b1?hl=ja&authuser=0"
         sleep 5
         
         

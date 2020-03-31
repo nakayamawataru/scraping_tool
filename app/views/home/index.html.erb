@@ -11,24 +11,28 @@
             <div class="col-md">
                 <div class="form-group">
                     <label>検索ワード：</label>
-                    <%= text_field :keyword, class:"form-control", placeholder:"中野　ラーメン or 超ラーメン中野店" %>
+                    <%= text_field_tag :keyword, "", class:"form-control", placeholder:"中野　ラーメン or 超ラーメン中野店" %>
                 </div>
                 <div class="form-group">
                     <label>縮尺：</label>
                     <select class="form-control" id="exampleFormControlSelect1">
-                        <option>項目１</option>
-                        <option>項目２</option>
-                        <option>項目３</option>
-                        <option>項目４</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>緯度：</label>
-                    <%= text_field :longitude, class:"form-control" %>
+                    <%= text_field_tag :longitude, "", class:"form-control" %>
                 </div>
                 <div class="form-group">
                     <label>経度：</label>
-                    <%= text_field :latitude, class:"form-control" %>
+                    <%= text_field_tag :latitude, "", class:"form-control" %>
                 </div>
             </div>
         </div>
@@ -70,12 +74,12 @@
                             <tbody>
                                 <% @name.zip(@details, @locations, @opening_hours, @rating_scores, @num_reviews) do |business|%>
                                     <tr>
-                                     <td><%= business[0].text %></td>
-                                     <td><%= business[1].text %></td>
-                                     <td><%= business[2].text %></td>
-                                     <td><%= business[3].text %></td>
-                                     <td><%= business[4].text %></td>
-                                     <td><%= business[5].text %></td>
+                                     <td><%= business[0].try(:text) || "データ無し" %></td>
+                                     <td><%= business[1].try(:text) || "データ無し" %></td>
+                                     <td><%= business[2].try(:text) || "データ無し" %></td>
+                                     <td><%= business[3].try(:text) || "データ無し" %></td>
+                                     <td><%= business[4].try(:text) || "データ無し" %></td>
+                                     <td><%= business[5].try(:text) || "データ無し" %></td>
                                     </tr>
                                 <% end %>
                             </tbody>
