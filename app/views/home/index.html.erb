@@ -1,0 +1,89 @@
+<br>
+<h1>Gppgle Map スクレイピング</h1>
+<br>
+
+<div class="border col-7" style="margin-left:3em;">
+    <br>
+    <h2>検索データ</h2>
+    <br>
+    <%= form_tag root_path, method: :get do %>
+        <div class="row">
+            <div class="col-md">
+                <div class="form-group">
+                    <label>検索ワード：</label>
+                    <%= text_field :keyword, class:"form-control", placeholder:"中野　ラーメン or 超ラーメン中野店" %>
+                </div>
+                <div class="form-group">
+                    <label>縮尺：</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>項目１</option>
+                        <option>項目２</option>
+                        <option>項目３</option>
+                        <option>項目４</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>緯度：</label>
+                    <%= text_field :longitude, class:"form-control" %>
+                </div>
+                <div class="form-group">
+                    <label>経度：</label>
+                    <%= text_field :latitude, class:"form-control" %>
+                </div>
+            </div>
+        </div>
+        <div class="row center-block text-center">
+        </div>
+        <div class="col-5">
+            <%= submit_tag "検索", class:"btn btn-outline-primary btn-block" %>
+        </div>
+    <% end %>
+</div>
+
+<div class="col-1">
+</div>
+<br>
+<br>
+<hr>
+<br>
+</div>
+<% if @businesses %>
+    <div class = "col-11" style="margin-left:3em;">
+    
+        <h2>データ一覧</h2>
+        <div class="row">
+            <div class="col-md">
+            
+                <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">店舗名</th>
+                        <th scope="col">カテゴリ</th>
+                        <th scope="col">住所</th>
+                        <th scope="col">営業時間</th>
+                        <th scope="col">口コミランク</th>
+                        <th scope="col">口コミ件数</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <tbody>
+                                <% @name.zip(@details, @locations, @opening_hours, @rating_scores, @num_reviews) do |business|%>
+                                    <tr>
+                                     <td><%= business[0].text %></td>
+                                     <td><%= business[1].text %></td>
+                                     <td><%= business[2].text %></td>
+                                     <td><%= business[3].text %></td>
+                                     <td><%= business[4].text %></td>
+                                     <td><%= business[5].text %></td>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+    </div>
+<% end %>
