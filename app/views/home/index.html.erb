@@ -1,10 +1,11 @@
 <br>
-<h1>Gppgle Map スクレイピング</h1>
+    <h1>Gppgle Map スクレイピング</h1>
 <br>
 
 <div class="border col-7" style="margin-left:3em;">
     <br>
-    <h2>検索データ</h2>
+    <h2 id="first-info" class="col-3">検索データ</h2>
+    <p id="search-info" style="display:none;">検索ワード、中心点の緯度経度を入力し検索ボタンを押してください</p>
     <br>
     <%= form_tag root_path, method: :get do %>
         <div class="row">
@@ -14,13 +15,12 @@
                     <%= text_field_tag :keyword, "", class:"form-control", placeholder:"中野　ラーメン or 超ラーメン中野店" %>
                 </div>
                 <div class="form-group">
-                    <label>縮尺：</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>13</option>
+                    <label>縮尺： (デフォルトは17)</label>
+                    <select name="scale" class="form-control" id="exampleFormControlSelect1">
+                        <option>17</option>
                         <option>14</option>
                         <option>15</option>
                         <option>16</option>
-                        <option>17</option>
                         <option>18</option>
                         <option>19</option>
                         <option>20</option>
@@ -38,9 +38,11 @@
         </div>
         <div class="row center-block text-center">
         </div>
-        <div class="col-5">
-            <%= submit_tag "検索", class:"btn btn-outline-primary btn-block" %>
-        </div>
+        <% if user_signed_in? %>
+            <div class="col-5">
+                <%= submit_tag "検索", class:"btn btn-outline-primary btn-block" %>
+            </div>
+        <% end %>
     <% end %>
 </div>
 
@@ -51,6 +53,18 @@
 <hr>
 <br>
 </div>
+
+    <% @names = ["わたる","ちひろ"] %>
+    <%= form_tag '/home/output_spread_sheet', method: :get do %>
+        <%= hidden_field_tag :name, @names %>
+        <%#= hidden_field_tag :name, @name %>
+        <%#= hidden_field_tag :details, @details %>
+        <%#= hidden_field_tag :locations, @locations %>
+        <%#= hidden_field_tag :opening_hours, @opening_hours %>
+        <%#= hidden_field_tag :rating_scores, @rating_scores %>
+        <%#= hidden_field_tag :num_reviews, @num_reviews %>
+        <%= submit_tag "Googleスプレッドシートへ出力", class:"btn btn-outline-primary btn-block col-7" %>
+    <% end %>
 <% if @businesses %>
     <div class = "col-11" style="margin-left:3em;">
     
@@ -91,3 +105,7 @@
         <br>
     </div>
 <% end %>
+
+     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
