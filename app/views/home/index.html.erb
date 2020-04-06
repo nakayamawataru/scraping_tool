@@ -54,9 +54,11 @@
 <br>
 </div>
 
-    <% @names = ["わたる","ちひろ"] %>
     <%= form_tag '/home/output_spread_sheet', method: :get do %>
-        <%= hidden_field_tag :name, @names %>
+        <%= hidden_field_tag :keyword, "中野ラーメン" %>
+        <%= hidden_field_tag :scale, 17 %>
+        <%= hidden_field_tag :longitude, 35.7061672 %>
+        <%= hidden_field_tag :latitude, 139.6631811 %>
         <%#= hidden_field_tag :name, @name %>
         <%#= hidden_field_tag :details, @details %>
         <%#= hidden_field_tag :locations, @locations %>

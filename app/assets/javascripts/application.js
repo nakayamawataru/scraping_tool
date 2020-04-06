@@ -14,14 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(document).ready(function() {
-
-/* global $ */
-$('#first-info').hover(function(){
+    /* global $ */
+$(document).on('turbolinks:load', function() {
+  $('#first-info').hover(function(){
     $('#search-info').fadeIn();
-},
-function(){
+  }, function(){
     $('#search-info').fadeOut();
-});
-
+  });
 });

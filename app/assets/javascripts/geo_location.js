@@ -32,13 +32,3 @@ const GeoSearch = function() {
         return this.baseUrl + urlParams;
       };
 }
-
-
-ーーーーーーーーーーーー
-
-         Object.keys(params). //key部分＝queryとuuleを取り出す
-         .map( //繰り返し処理
-        function(k){ //kどっから出てきた？
-         return k + "=" + params[k]; //params[k]!?
-        }
-         join('&');
