@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.edit-user-form{
+    margin: 5em 10em;
+}

@@ -21,4 +21,25 @@ $(document).on('turbolinks:load', function() {
   }, function(){
     $('#search-info').fadeOut();
   });
+  
+  
+  $('.js-modal-open').click(function(){
+    $('.modal').fadeIn();
+  });
+  $('js-modal-close').click(function(){
+    $('.modal').fadeOut();
+  });
+  
+/*
+$(function(){
+    $('.js-modal-open').on('click',function(){
+        $('.js-modal').fadeIn();
+        return false;
+    });
+    $('.js-modal-close').on('click',function(){
+        $('.js-modal').fadeOut();
+        return false;
+    });
+});
+*/
 });
