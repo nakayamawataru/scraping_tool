@@ -1,0 +1,26 @@
+{
+  "name": "environment",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nakayamawataru/scraping_tool.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nakayamawataru/scraping_tool/issues"
+  },
+  "homepage": "https://github.com/nakayamawataru/scraping_tool#readme",
+  "private": true,
+  "dependencies": {
+    "btoa": "^1.2.1"
+  }
+}

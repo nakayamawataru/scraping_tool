@@ -27,6 +27,7 @@ class GoogleMapCrawler
         driver.get("https://www.google.com/maps/search/#{keyword}/#{location},#{scale}z/data=!3m1!4b1?hl=ja&authuser=0")
         p "https://www.google.com/maps/search/#{keyword}/#{location},#{scale}z/data=!3m1!4b1?hl=ja&authuser=0"
         sleep 5
+        #tbm=lclを入れて作り直す必要あり
         
         #各要素を配列としてまとめて取得
         names = driver.find_elements(class: "section-result-title")

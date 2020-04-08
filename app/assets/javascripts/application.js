@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require btoa
+//= require geo_location
 //= require_tree .
     /* global $ */
 $(document).on('turbolinks:load', function() {
