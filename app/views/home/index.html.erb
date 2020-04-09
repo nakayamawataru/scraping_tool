@@ -83,6 +83,43 @@
     <% end %>
 </div>
 <% if @businesses %>
+    <% if false %>
+    <%#項目数多いver%>
+        <div class = "col-11" style="margin-left:3em;">
+        
+            <h2>データ一覧</h2>
+            <div class="row">
+                <div class="col-md">
+                
+                    <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">店舗名</th>
+                            <th scope="col">カテゴリ</th>
+                            <th scope="col">住所</th>
+                            <th scope="col">営業時間</th>
+                            <th scope="col">口コミランク</th>
+                            <th scope="col">口コミ件数</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                            <% @name.zip(@details, @locations, @opening_hours, @rating_scores, @num_reviews) do |business|%>
+                                <tr>
+                                 <td><%= business[0].try(:text) || "データ無し" %></td>
+                                 <td><%= business[1].try(:text) || "データ無し" %></td>
+                                 <td><%= business[2].try(:text) || "データ無し" %></td>
+                                 <td><%= business[3].try(:text) || "データ無し" %></td>
+                                 <td><%= business[4].try(:text) || "データ無し" %></td>
+                                 <td><%= business[5].try(:text) || "データ無し" %></td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+        </div>
+    <% end %>
     <div class = "col-11" style="margin-left:3em;">
     
         <h2>データ一覧</h2>
@@ -93,28 +130,16 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">店舗名</th>
-                        <th scope="col">カテゴリ</th>
-                        <th scope="col">住所</th>
-                        <th scope="col">営業時間</th>
                         <th scope="col">口コミランク</th>
-                        <th scope="col">口コミ件数</th>
                     </tr>
                 </thead>
                     <tbody>
-                        <tr>
-                            <tbody>
-                                <% @name.zip(@details, @locations, @opening_hours, @rating_scores, @num_reviews) do |business|%>
-                                    <tr>
-                                     <td><%= business[0].try(:text) || "データ無し" %></td>
-                                     <td><%= business[1].try(:text) || "データ無し" %></td>
-                                     <td><%= business[2].try(:text) || "データ無し" %></td>
-                                     <td><%= business[3].try(:text) || "データ無し" %></td>
-                                     <td><%= business[4].try(:text) || "データ無し" %></td>
-                                     <td><%= business[5].try(:text) || "データ無し" %></td>
-                                    </tr>
-                                <% end %>
-                            </tbody>
-                        </tr>
+                        <% @name.zip(@rating_scores) do |business|%>
+                            <tr>
+                             <td><%= business[0].try(:text) || "データ無し" %></td>
+                             <td><%= business[1].try(:text) || "データ無し" %></td>
+                            </tr>
+                        <% end %>
                     </tbody>
                 </table>
             </div>
