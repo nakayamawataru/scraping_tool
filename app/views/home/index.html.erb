@@ -5,6 +5,8 @@
 <div class="border col-7" style="margin-left:3em;">
     <br>
     <h2 id="first-info" class="col-3">検索データ</h2>
+    <%= link_to '検索データを初期化する', root_path %>
+    <br>
     <p id="search-info" style="display:none;">検索ワード、中心点の緯度経度を入力し検索ボタンを押してください</p>
     <br>
     <%= form_tag root_path, method: :get do %>
@@ -25,29 +27,25 @@
                     <%= text_field_tag :keyword, "", class:"form-control", placeholder:"中野　ラーメン or 超ラーメン中野店" %>
                 </div>
                 <div class="form-group">
-                    <label>縮尺： (デフォルトは17)</label>
-                    <select name="scale" class="form-control" id="exampleFormControlSelect1">
-                        <option>17</option>
-                        <option>14</option>
-                        <option>15</option>
-                        <option>16</option>
-                        <option>18</option>
-                        <option>19</option>
-                        <option>20</option>
+                    <label>順位検索地点を選択</label>
+                    <select class="form-control select2" id="exampleFormControlSelect1">
+                            <option></option>
+                        <% @search_locations.each do |search_location| %>
+                            <option><%= search_location.base_address %></option>
+                        <% end %>
                     </select>
+                    <%= hidden_field_tag :location, "", class:"location" %>
                 </div>
-                <div class="form-group">
-                    <label>緯度：</label>
-                    <%= text_field_tag :longitude, "", class:"form-control" %>
-                </div>
-                <div class="form-group">
-                    <label>経度：</label>
-                    <%= text_field_tag :latitude, "", class:"form-control" %>
-                </div>
-                <select name="scale" class="form-control" id="exampleFormControlSelect1">
-                    <option>住所</option>
-                </select>
-                <%#= hidden_field_tag :uule, "", class:"uule" %>
+                <% if false %>
+                    <div class="form-group">
+                        <label>緯度：</label>
+                        <%= text_field_tag :longitude, "", class:"form-control" %>
+                    </div>
+                    <div class="form-group">
+                        <label>経度：</label>
+                        <%= text_field_tag :latitude, "", class:"form-control" %>
+                    </div>
+                <% end %>
             </div>
         </div>
         <div class="row center-block text-center">
@@ -62,64 +60,19 @@
 
 <div class="col-1">
 </div>
-<br>
-<br>
-<hr>
-<br>
-</div>
+<% if @businesses %>
 <div style="margin:5em 10em;">
     <%= form_tag '/home/output_spread_sheet', method: :get do %>
-        <%= hidden_field_tag :keyword, "中野ラーメン" %>
-        <%= hidden_field_tag :scale, 17 %>
-        <%= hidden_field_tag :longitude, 35.7061672 %>
-        <%= hidden_field_tag :latitude, 139.6631811 %>
-        <%#= hidden_field_tag :name, @name %>
-        <%#= hidden_field_tag :details, @details %>
-        <%#= hidden_field_tag :locations, @locations %>
-        <%#= hidden_field_tag :opening_hours, @opening_hours %>
-        <%#= hidden_field_tag :rating_scores, @rating_scores %>
-        <%#= hidden_field_tag :num_reviews, @num_reviews %>
-        <%= submit_tag "Googleスプレッドシートへ出力", class:"btn btn-outline-primary btn-block col-7" %>
+        <% @names.zip(@locations, @rating_scores, @num_reviews, @contents) do |business|%>
+            <%= hidden_field_tag "names[]", business[0].try(:text) || "データ無し" %>
+            <%= hidden_field_tag "locations[]", business[1].try(:text) || "データ無し" %>
+            <%= hidden_field_tag "rating_scores[]", business[2].try(:text) || "データ無し" %>
+            <%= hidden_field_tag "num_reviews[]", business[3].try(:text) || "データ無し" %>
+            <%= hidden_field_tag "contents[]", business[4].try(:text) || "データ無し" %>
+            <% end %>
+            <%= submit_tag "Googleスプレッドシートへ出力", class:"btn btn-outline-primary btn-block col-7" %>
     <% end %>
 </div>
-<% if @businesses %>
-    <% if false %>
-    <%#項目数多いver%>
-        <div class = "col-11" style="margin-left:3em;">
-        
-            <h2>データ一覧</h2>
-            <div class="row">
-                <div class="col-md">
-                
-                    <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">店舗名</th>
-                            <th scope="col">カテゴリ</th>
-                            <th scope="col">住所</th>
-                            <th scope="col">営業時間</th>
-                            <th scope="col">口コミランク</th>
-                            <th scope="col">口コミ件数</th>
-                        </tr>
-                    </thead>
-                        <tbody>
-                            <% @name.zip(@details, @locations, @opening_hours, @rating_scores, @num_reviews) do |business|%>
-                                <tr>
-                                 <td><%= business[0].try(:text) || "データ無し" %></td>
-                                 <td><%= business[1].try(:text) || "データ無し" %></td>
-                                 <td><%= business[2].try(:text) || "データ無し" %></td>
-                                 <td><%= business[3].try(:text) || "データ無し" %></td>
-                                 <td><%= business[4].try(:text) || "データ無し" %></td>
-                                 <td><%= business[5].try(:text) || "データ無し" %></td>
-                                </tr>
-                            <% end %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <br>
-        </div>
-    <% end %>
     <div class = "col-11" style="margin-left:3em;">
     
         <h2>データ一覧</h2>
@@ -130,14 +83,18 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">店舗名</th>
+                        <th scope="col">住所</th>
                         <th scope="col">口コミランク</th>
+                        <th scope="col">口コミ数</th>
                     </tr>
                 </thead>
                     <tbody>
-                        <% @name.zip(@rating_scores) do |business|%>
+                        <% @names.zip(@locations, @rating_scores, @num_reviews) do |business|%>
                             <tr>
                              <td><%= business[0].try(:text) || "データ無し" %></td>
                              <td><%= business[1].try(:text) || "データ無し" %></td>
+                             <td><%= business[2].try(:text) || "データ無し" %></td>
+                             <td><%= business[3].try(:text) || "データ無し" %></td>
                             </tr>
                         <% end %>
                     </tbody>
@@ -151,3 +108,4 @@
      <script src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"></script>
+      

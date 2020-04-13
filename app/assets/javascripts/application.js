@@ -32,16 +32,14 @@ $(document).on('turbolinks:load', function() {
     $('.modal').fadeOut();
   });
   
-/*
-$(function(){
-    $('.js-modal-open').on('click',function(){
-        $('.js-modal').fadeIn();
-        return false;
+    $('.select2').select2();
+    
+    $('.select2').change(function(){
+      var geo = new GeoSearch();
+      var uule = geo.build({
+        location:this.value
+      });
+      $('.location').val(uule);
     });
-    $('.js-modal-close').on('click',function(){
-        $('.js-modal').fadeOut();
-        return false;
-    });
-});
-*/
+  
 });
