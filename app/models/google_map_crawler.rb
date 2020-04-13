@@ -37,8 +37,8 @@ class GoogleMapCrawler
         #category = driver.find_elements(class: "tlDDJd")
         #details = driver.find_elements(:xpath, '//*[@id="rl_ist0"]/div[1]/div[4]/div[8]/div/div[2]/div/a/div/span/div[2]/span')
         #opening_hours = driver.find_elements(class: "rllt__wrapped") 
-        contents = driver.find_elements(class: "VkpGBb")
+        #contents = driver.find_elements(class: "VkpGBb")
         #binding.pry
-        return [names, locations, rating_scores, num_reviews, contents]
+        return [names, locations, rating_scores, num_reviews]
     end
 end

@@ -11,14 +11,14 @@ class HomeController < ApplicationController
       @locations = @businesses[1]
       @rating_scores = @businesses[2]
       @num_reviews = @businesses[3]
-      @contents = @businesses[4]
+      #@contents = @businesses[4]
 
     end
   end
   
   def output_spread_sheet
-    binding.pry
-    OutputSpreadSheet.new.output(params[:names], params[:locations], params[:rating_scores], params[:num_reviews], params[:contents])
+    #binding.pry
+    OutputSpreadSheet.new.output(params[:names], params[:locations], params[:rating_scores], params[:num_reviews])
     #binding.pry
     redirect_to root_path
   end
