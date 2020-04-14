@@ -17,6 +17,7 @@
 //= require geo_location
 //= require_tree .
     /* global $ */
+    /* global GeoSearch */
 $(document).on('turbolinks:load', function() {
   $('#first-info').hover(function(){
     $('#search-info').fadeIn();
