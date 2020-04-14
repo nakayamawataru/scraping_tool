@@ -1,4 +1,5 @@
 //const btoa = require('btoa');
+/* global btoa*/
 
 const GeoSearch = function() {
 
