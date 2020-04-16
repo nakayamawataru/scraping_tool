@@ -3,9 +3,9 @@ class HomeController < ApplicationController
   def index
       @search_locations = BaseLocation.all
     
-    if params[:keyword].present? && params[:location] #&& params[:longitude] && params[:latitude]
+    if params[:keyword].present? && params[:location]
 
-      @businesses = GoogleMapCrawler.new.exec(params[:keyword], params[:location]) #, params[:longitude], params[:latitude]
+      @businesses = GoogleMapCrawler.new.exec(params[:keyword], params[:location])
 
       @names = @businesses[0]
       @locations = @businesses[1]
@@ -17,9 +17,7 @@ class HomeController < ApplicationController
   end
   
   def output_spread_sheet
-    #binding.pry
     OutputSpreadSheet.new.output(params[:names], params[:locations], params[:rating_scores], params[:num_reviews])
-    #binding.pry
     redirect_to root_path
   end
   
