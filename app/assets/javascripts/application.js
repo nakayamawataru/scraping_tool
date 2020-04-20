@@ -15,9 +15,12 @@
 //= require turbolinks
 //= require geo_location
 //= require_tree .
-    /* global $ */
-    /* global GeoSearch */
+/* global $ */
+/* global GeoSearch */
+/* global introJs */
+//= require intro.js/intro
 $(document).on('turbolinks:load', function() {
+
   $('#first-info').hover(function(){
     $('#search-info').fadeIn();
   }, function(){
@@ -41,5 +44,5 @@ $(document).on('turbolinks:load', function() {
       });
       $('.location').val(uule);
     });
-  
+    
 });

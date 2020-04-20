@@ -27,7 +27,7 @@ module Environment
     config.generators.javascript_engine = :js
     
     #デフォルトの言語
-    config.i18n.default_locale = :en
+    config.i18n.default_locale = :ja
     
     # 言語ファイルを階層ごとに設定するための記述
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]

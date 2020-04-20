@@ -21,6 +21,7 @@
   "homepage": "https://github.com/nakayamawataru/scraping_tool#readme",
   "private": true,
   "dependencies": {
-    "btoa": "^1.2.1"
+    "btoa": "^1.2.1",
+    "intro.js": "^2.9.3"
   }
 }

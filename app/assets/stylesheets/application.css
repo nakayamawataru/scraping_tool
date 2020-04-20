@@ -14,6 +14,8 @@
  *= require_self
  */
 
+@import "intro.js/introjs.css";
+
 .edit-user-form{
     margin: 5em 10em;
 }
