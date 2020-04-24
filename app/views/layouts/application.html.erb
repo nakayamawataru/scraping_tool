@@ -15,17 +15,22 @@
   <body>
     <header>
       <div class="header-contents">
-      <%= link_to 'ホーム', root_path %>
+      <%= link_to I18n.t('home'), root_path %>
         <div class="sign-in">
           <% if user_signed_in? %> 
             <strong><%= current_user.name %></strong>.
             <%# binding.pry %>
-            <%= link_to 'プロフィール変更', edit_user_registration_path %> |
-            <%= link_to "ログアウト", sign_out_path %>
+            <%= link_to I18n.t('edit_profile'), edit_user_registration_path %> |
+            <%= link_to I18n.t('logout'), sign_out_path %>
           <% else %>
-            <%= link_to "サインイン", new_user_registration_path %> |
-            <%= link_to "ログイン", new_user_session_path %>
+            <%= link_to  I18n.t('sign_up'), new_user_registration_path %> |
+            <%= link_to I18n.t('login'), new_user_session_path %>
           <% end %>
+          <select class="form-control input-lg locales" id="usage1select1" style="width:6em;">
+            <option></option>
+      			<option value="ja">日本語</option>
+      			<option value="en">English</option>
+      		</select>
         </div>
       </div>
       <p class="notice"><%= notice %></p>

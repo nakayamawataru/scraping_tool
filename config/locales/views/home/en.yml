@@ -1,5 +1,18 @@
 en:
+  home: "Home"
+  edit_profile: "Edit Profile"
+  logout: "Logout"
   title: "Google Map Scraping"
   search: "Search"
   reset: "Initialize search data"
   search-help: "Search word rank acquisition Enter the address and press the search button"
+  modal_help_title: "Please enter a keyword"
+  close: "close"
+  keyword: "Keyword"
+  keyword_example: "Example : Nakano ramen or super ramen Nakano"
+  search_location: "Select Search location"
+  login: "Login"
+  sign_up: "Sign up"
+  auto_login: "Auto login from now on"
+  forget_password: "If you forgot Password"
+  

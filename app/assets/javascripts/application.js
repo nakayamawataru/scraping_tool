@@ -45,4 +45,9 @@ $(document).on('turbolinks:load', function() {
       $('.location').val(uule);
     });
     
+    $('#usage1select1').change(function(){
+      const path = location.pathname.replace(/\/(ja|en)\/?/, '');//
+      var locale = $('#usage1select1')[0].value;
+      window.location.replace(`/${locale}/${path}`);
+    });
 });
