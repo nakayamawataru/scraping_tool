@@ -26,11 +26,13 @@
             <%= link_to  I18n.t('sign_up'), new_user_registration_path %> |
             <%= link_to I18n.t('login'), new_user_session_path %>
           <% end %>
+          
           <select class="form-control input-lg locales" id="usage1select1" style="width:6em;">
             <option></option>
       			<option value="ja">日本語</option>
       			<option value="en">English</option>
       		</select>
+      		
         </div>
       </div>
       <p class="notice"><%= notice %></p>
