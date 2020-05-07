@@ -21,4 +21,11 @@ class HomeController < ApplicationController
     redirect_to root_path
   end
   
+  def custom_scraping
+  end
+  
+  def custom_crawler
+    
+  end
+  
 end

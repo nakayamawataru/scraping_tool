@@ -1,0 +1,63 @@
+<br>
+    <h1><%= I18n.t('custom_scraping.custom_title') %></h1>
+    <h1>作成中</h1>
+<br>
+
+<div class="border col-7" style="margin-left:3em;">
+    <br>
+    <h2 id="first-info" class="col-6"><%= I18n.t('search') %></h2>
+    <%= link_to I18n.t('reset'), "custom_scraping" %>
+    <br>
+    <p id="search-info" style="display:none;"><%= I18n.t('search-help') %></p>
+    <br>
+    <%= form_tag crawler_custom_crawler_path, method: :post do %>
+        <div class="row">
+            <div class="col-md">
+                <div class="form-group">
+                    <label><%= I18n.t('custom_scraping.url') %>：</label><br>
+                    <%= text_field_tag :url, "",  class:"form-control" %><br>
+                    
+                    <label><%= I18n.t('custom_scraping.class') %>：</label>
+                    <%= text_field_tag :class_name, "",  class:"form-control" %><br>
+                    <%if false%>
+                    <label><%= I18n.t('custom_scraping.xpath') %>：</label>
+                    <%= text_field_tag :xpath, "",  class:"form-control" %><br>
+                    
+                    <label><%= I18n.t('custom_scraping.id') %>：</label>
+                    <%= text_field_tag :id, "",  class:"form-control" %>
+                    <%end%>
+                </div>
+            </div>
+        </div>
+        <div class="row center-block text-center">
+        </div>
+        <% if user_signed_in? %>
+            <div class="col-5">
+                <%= submit_tag "検索", class:"btn btn-outline-primary btn-block" %>
+            </div>
+        <% end %>
+    <% end %>
+</div>
+
+<% if @content %>
+    <div class = "col-11" style="margin-left:3em;">
+    
+        <h2>データ一覧</h2>
+        <div class="row">
+            <div class="col-md">
+            
+                <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ゲットした情報</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <%= @content.text %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+    </div>
+<% end %>

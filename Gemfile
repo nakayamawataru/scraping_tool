@@ -56,3 +56,6 @@ gem 'devise-i18n-views'
 
 gem 'dotenv-rails'
 gem 'rails-i18n'
+gem 'whenever', require: false
+
+gem 'twitter'

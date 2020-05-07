@@ -15,3 +15,9 @@ ja:
   sign_up: "ユーザー登録"
   auto_login: "次回から自動でログインする"
   forget_password: "パスワードを忘れたら"
+  custom_scraping:
+    custom_title: "カスタムスクレイピング"
+    url: "スクレイピング先URL"
+    class: "class情報をスクレイピングする場合はこちら"
+    xpath: "Xpath情報をスクレイピングする場合はこちら"
+    id: "id情報をスクレイピングする場合はこちら"
