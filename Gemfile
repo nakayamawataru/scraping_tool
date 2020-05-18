@@ -58,4 +58,5 @@ gem 'dotenv-rails'
 gem 'rails-i18n'
 gem 'whenever', require: false
 
+gem 'unf_ext', '~> 0.0.7.1'
 gem 'twitter'
