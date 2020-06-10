@@ -60,3 +60,4 @@ gem 'whenever', require: false
 
 gem 'unf_ext', '~> 0.0.7.1'
 gem 'twitter'
+gem 'aws-sdk', '~> 3'

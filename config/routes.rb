@@ -10,6 +10,10 @@ Rails.application.routes.draw do
         post 'custom_crawler', to: 'crawler#custom_crawler'
       end
     end
+    
+    #resources :twitter do
+      post 'twitter/tweet', to: 'twitter#tweet'
+    #end
 
     resources :shops
     get 'shops' => 'shops#index'

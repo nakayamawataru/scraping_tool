@@ -14,9 +14,9 @@ ActiveRecord::Schema.define(version: 20200505032956) do
 
   create_table "base_locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "base_address"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.text     "base_address_english", limit: 65535
+    t.string   "base_address_english"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "custom_crawlers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

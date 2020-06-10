@@ -61,18 +61,18 @@
 <div class="col-1">
 </div>
 <% if @businesses %>
-<div style="margin:5em 10em;">
-    <%= form_tag '/home/output_spread_sheet', method: :get do %>
-        <% @names.zip(@locations, @rating_scores, @num_reviews) do |business|%>
-            <%= hidden_field_tag "names[]", business[0].try(:text) || "データ無し" %>
-            <%= hidden_field_tag "locations[]", business[1].try(:text) || "データ無し" %>
-            <%= hidden_field_tag "rating_scores[]", business[2].try(:text) || "データ無し" %>
-            <%= hidden_field_tag "num_reviews[]", business[3].try(:text) || "データ無し" %>
-            <%#= hidden_field_tag "contents[]", business[4].try(:text) || "データ無し" %>
-            <% end %>
-            <%= submit_tag "Googleスプレッドシートへ出力", class:"btn btn-outline-primary btn-block col-7" %>
-    <% end %>
-</div>
+    <div style="margin:5em 10em;">
+        <%= form_tag '/home/output_spread_sheet', method: :get do %>
+            <% @names.zip(@locations, @rating_scores, @num_reviews) do |business|%>
+                <%= hidden_field_tag "names[]", business[0].try(:text) || "データ無し" %>
+                <%= hidden_field_tag "locations[]", business[1].try(:text) || "データ無し" %>
+                <%= hidden_field_tag "rating_scores[]", business[2].try(:text) || "データ無し" %>
+                <%= hidden_field_tag "num_reviews[]", business[3].try(:text) || "データ無し" %>
+                <%#= hidden_field_tag "contents[]", business[4].try(:text) || "データ無し" %>
+                <% end %>
+                <%= submit_tag "Googleスプレッドシートへ出力", class:"btn btn-outline-primary btn-block col-7" %>
+        <% end %>
+    </div>
     <div class = "col-11" style="margin-left:3em;">
     
         <h2>データ一覧</h2>
@@ -104,3 +104,9 @@
         <br>
     </div>
 <% end %>
+<div class="col-7" style="margin-left:2em;">
+    <%= form_tag twitter_tweet_path, method: :post do %>
+        <%= text_field_tag :text, "", class: 'form-control col-7' %>
+        <%= submit_tag "twitterに投稿", class: 'btn btn-success' %>
+    <% end %>
+</div>
